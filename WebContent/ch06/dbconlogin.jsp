@@ -3,34 +3,56 @@
     pageEncoding="UTF-8"
     import = "java.sql.*"
     %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Login Data Search</title>
-</head>
-<body>
-	<%
-	Class.forName("org.mariadb.jdbc.Driver");
+    <%
+    	Class.forName("org.mariadb.jdbc.Driver");
 	String url = "jdbc:mariadb://localhost:3306/ktjdb";
 	String user = "ktj";
 	String password = "1111";
 	Connection con = DriverManager.getConnection(url, user, password);
-	String sql = "select * from login";
+	String sql = "select * from login order by id";
 	Statement stmt = con.createStatement();
 	ResultSet rs = stmt.executeQuery(sql);
-	
-	
+	 %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<title>Login Data Search</title>
+</head>
+<body>
+<div class="container">
+	<table class="table table-striped">
+	<tr>
+		<th>id</th>
+		<th>pwd</th>
+	</tr>
+	<tr>
+<%
 	//반환데이터 출력하기
 	while(rs.next()){
-		out.println(rs.getString("id"));
-		out.println(rs.getString("pwd"));
-		out.println("<br>");
+		String id = rs.getString("id");
+		String pwd = rs.getString("pwd");
+%>
+		<td><%=id %></td>
+		<td><%=pwd %></td>
+	</tr>
+<%
 	}
+%>
+	</table>
+	</div>
+<%
+	//객체 해지
 	rs.close();
 	con.close();
 	stmt.close();
-	%>
+%>
 	<script>alert("Connection Success");</script>
 </body>
 </html>
