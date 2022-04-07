@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<style>
+input[type=text], textarea{
+	resize:none;
+	
+}
+input[type=text], select{
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+input[type=sumit]{
+	width: 100%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+input[type=submit]:hover{
+	background-color: #45a049;
+}
+div{
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+</style>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<div>
+<form action="4-5.jsp" method="post">
+
+    <table>
+        <tr>
+            <td>아이디</td>
+            <td><input name="id" placeholder="4자리이상12자리이하"></td>
+        </tr>
+
+        <tr>
+            <td>비밀번호</td>
+            <td><input type="password" name="pw" placeholder="4자리이상20자리이하"></td>
+        </tr>
+        <tr>
+            <td>성별</td>
+            <td>
+                <input type="radio" name="gender" value="남" checked>남
+                <input type="radio" name="gender" value="여">여
+            </td>
+        </tr>
+        <tr>
+            <td>가입경로</td>
+            <td>
+                <select name="intro">
+                    <option value="웹검색" selected>웹검색</option>
+                    <option value="지인소개">지인소개</option>
+                    <option value="기타">기타</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>주소지</td>
+            <td>
+                <select name="addr">
+                    <option value="서울">서울</option>
+                    <option value="부산" selected="selected">부산</option>
+                    <option value="경기">경기</option>
+                    <option value="강원도">강원도</option>
+                    <option value="충청도">충청도</option>
+                    <option value="경상도">경상도</option>
+                    <option value="전라도">전라도</option>
+                    <option value="제주도">제주도</option>
+                    <option value="기타">기타</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>메모</td>
+            <td>
+                <textarea name="memo" rows="8"></textarea>
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="가입">
+</form>
+</div>
+</body>
+</html>
