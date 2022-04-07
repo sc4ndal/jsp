@@ -1,6 +1,27 @@
 <%@page import="java.awt.TextArea"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import = "java.sql.*"
+    %>
+    <%
+    request.setCharacterEncoding("utf-8");
+    String name = request.getParameter("name");
+    String message = request.getParameter("message");
+    Class.forName("org.mariadb.jdbc.Driver");
+    String url = "jdbc:mariadb://localhost:3306/ktjdb";
+    String user = "ktj";
+    String password = "1111";
+    Connection con = DriverManager.getConnection(url, user, password);
+    
+    String sql = "insert into writehtml(name, message) values(?, ?)";
+    PreparedStatement pstmt = con.prepareStatement(sql);
+    pstmt.setString(1, name);
+    pstmt.setString(2, message);
+    
+    pstmt.executeUpdate();
+    con.close();
+    pstmt.close();
+    %>
 <!DOCTYPE html>
 <html>
 <style>
@@ -46,11 +67,7 @@ label {
 </head>
 <body>
 <div class="container">
-	<%
-	request.setCharacterEncoding("utf-8");
-	String name = (String)request.getParameter("name");
-	String message = (String)request.getParameter("message");
-	%>
+<script>alert("Success");</script>
 	작성자 이름 : <%out.print(name); %><br>
 	<%--작성 내용 : <%out.print(message); %> --%>
 	<div class="row">
