@@ -1,10 +1,20 @@
+<%
+/*
+	파일명 : 
+	프로그램 설명 : 
+
+*/
+
+%>
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>회원 관리</title>
+	<title>게시판 관리</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -12,8 +22,8 @@
 </head>
 <body>
 	<div class="jumbotron text-center" style="margin-bottom:0">
-	  <h1>Account Management</h1>
-	  <p>회원관리</p>
+	  <h1>Post Management</h1>
+	  <p>게시판 관리</p>
 	</div>
 	
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -37,8 +47,8 @@
 	</nav>
 	<br><br>
   <div class="text-center">
-		<button  type="button" class="btn btn-primary" onclick="location.href='list.jsp'">멤버 목록</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button  type="button" class="btn btn-primary" onclick="location.href='insertForm.jsp'">멤버 입력</button>
+		<button  type="button" class="btn btn-primary" onclick="location.href='postList.jsp'">게시판 목록</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button  type="button" class="btn btn-primary" onclick="location.href='postInsertForm.jsp'">게시판 작성</button>
 	</div>
 </body>
 </html>
