@@ -1,22 +1,16 @@
-<%@page import="javax.sql.DataSource"%>
-<%@page import="javax.naming.InitialContext"%>
-<%@page import="javax.naming.Context"%>
+<%@page import="cs.LoginDto"%>
+<%@page import="cs.LoginDao"%>
+<%@page import="java.util.ArrayList"
+
+%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.sql.*"%>
 <%
-	//DBCP로변경 DataBaseConnectionPool
-	Context initCtx = new InitialContext();
-	Context envCtx = (Context)initCtx.lookup("java:comp/env");
-	DataSource ds = (DataSource)envCtx.lookup("jdbc/tjkim");
-	Connection con = ds.getConnection();
-	//SQL문
-	String sql = "SELECT * FROM LOGIN ORDER BY ID";
-	Statement st = con.createStatement();
-	
-	//SQL 실행
-	ResultSet rs = st.executeQuery(sql);
+	LoginDao dao = new LoginDao();
+	ArrayList<LoginDto> dtos = dao.list();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,24 +31,19 @@
 			<th>이름</th>
 			<th>비밀번호</th>
 		</tr>
-<% 
-	//DB에서 값을 하나씩 가져옴 
-	while (rs.next()){
-		String id = rs.getString("id");
-		String name = rs.getString("name");
-		String pwd = rs.getString("pwd");
-%>	
-		<tr>
-			<td><a href="updateForm.jsp?id=<%=id %>"><%=id %></a></td>
-			
-			<td><%=name %></td>
-			<td><%=pwd %></td>
-		</tr>
-<%} 
-	//6. 연결 해제
-	rs.close();
-	st.close();
-	con.close();
+		
+<%
+	//반환데이터 출력
+	for(LoginDto dto : dtos){
+
+%>
+<tr>
+	<td><a href="updateForm.jsp?id=<%=dto.getId()%>"><%=dto.getId() %></a></td>
+	<td><%=dto.getName() %></td>
+	<td><%=dto.getPwd() %></td>
+	</tr>
+<%
+	}
 %>
 	</table>
 	</div>	

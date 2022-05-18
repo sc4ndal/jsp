@@ -29,6 +29,7 @@
 	      <label for="pwd">PASSWORD:</label>
 	      <input type="password" class="form-control" id="pwd" name="pwd">
 	    </div>
+
 	    <br>
 	    <div class="text-center">
 				<button type="submit" class="btn btn-secondary">등록</button>
